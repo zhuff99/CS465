@@ -2,15 +2,12 @@ const mongoose = require('mongoose');
 const Trip = require('../models/travlr'); //Register Model
 const Model = mongoose.model('trips');
 
-// Get: /trips - list all trips. Include HTML status code for all outcomes and JSON message to the requesting client.
 
 const tripsList = async (req, res) => {
     const q = await Model
         .find({}) // No filter, return all records
         .exec();
 
-    // Uncomment the following line to show result of query on console
-    // console.log(q);
 
     if (!q) { // Database returned no data
         return res
@@ -23,16 +20,12 @@ const tripsList = async (req, res) => {
     }
 };
 
-// GET: /trips/:tripCode - lists a single trip. Response must include HTML status code for all outcomes and JSON
-// message to the requesting client
+
 
 const tripsFindByCode = async (req, res) => {
     const q = await Model
         .find({ 'code': req.params.tripsCode }) // Return single record
         .exec();
-
-    // Uncomment following line to show results of query on console
-    // console.log(q);
 
     if (!q) { // Database returned no data
         return res
@@ -47,7 +40,6 @@ const tripsFindByCode = async (req, res) => {
  
 }
 
-// POST: /trips - adds a new trip, response must include HTML status code for all outcomes and JSON message to the requesting client
 const tripsAddTrip = async (req, res) => {
     const newTrip = new Trip({
         code: req.body.code,
@@ -72,12 +64,9 @@ const tripsAddTrip = async (req, res) => {
             .json(q);
     }
 
-    //uncomment the following line to show results of operation on the console
-
     console.log(q);
 }
 
-// PUT: /trips/:tripCode - Adds a new Trip response must include HTML status code and JSON message to the requesting client for all outcomes
 
 const tripsUpdateTrip = async(req, res) => {
 

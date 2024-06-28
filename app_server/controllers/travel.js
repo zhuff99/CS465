@@ -1,4 +1,4 @@
-/* JGiliam: Module 3 step 3 Read data created in trips.json */
+
 const tripsEndpoint = 'http://localhost:3000/api/trips';
 const options = {
     method: 'GET',
@@ -27,7 +27,7 @@ const travel = async function(req, res, next) {
             res.render('travel', {title: 'Travlr Getaways', trips: json, message});
         })
         .catch(err => res.status(500).send(e.message));
-    //console.log('TRAVEL CONTROLLER AFTER RENDER');
+
 };
 
 module.exports = {

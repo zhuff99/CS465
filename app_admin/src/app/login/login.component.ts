@@ -32,7 +32,7 @@ export class LoginComponent {
     if (!this.credentials.email || !this.credentials.password ||
       !this.credentials.name) {
       this.formError = 'All fields are required, please try again';
-      this.router.navigateByUrl('#'); // Return to login page
+      this.router.navigateByUrl('#'); 
     } else {
       this.doLogin();
     }
@@ -42,12 +42,9 @@ export class LoginComponent {
       name: this.credentials.name,
       email: this.credentials.email
     } as User;
-    // console.log('LoginComponent::doLogin');
-    // console.log(this.credentials);
     this.authenticationService.login(newUser,
       this.credentials.password);
     if (this.authenticationService.isLoggedIn()) {
-      // console.log('Router::Direct');
       this.router.navigate(['']);
     } else {
       var timer = setTimeout(() => {

@@ -35,13 +35,11 @@ const register = async(req, res) => {
 };
 
 const login = (req, res) => {
-    // Validate message to ensure that email and password are present.
     if (!req.body.email || !req.body.password) {
         return res
             .status(400)
             .json({ "message": "All fields required" });
     }
-    // Delegate authentication to passport module
     passport.authenticate('local', (err, user, info) => {
         if (err) {
             // Error in Authentication Process
